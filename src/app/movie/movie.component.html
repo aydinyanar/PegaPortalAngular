@@ -1,0 +1,29 @@
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" placeholder="Search" name="search"
+    aria-label="Search">
+  <button [disabled]="!searchText" class="btn btn-outline-success my-2 my-sm-0" (click)="getMovie()" type="submit">Search</button>
+</form>
+<br>
+<table class="table" *ngIf="movie && !errorMessage">
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>Released</th>
+    <th>Director</th>
+    <th>Actors</th>
+    <th>Plot</th>
+  </thead>
+  <tbody>
+    <tr style="text-align:center">
+      <td><img src='{{movie.mv_Poster}}' /> </td>
+      <td>{{movie.mv_Title}}</td>
+      <td>{{movie.mv_Rated}}</td>
+      <td>{{movie.mv_Released}}</td>
+      <td>{{movie.mv_Director}}</td>
+      <td>{{movie.mv_Actors}} </td>
+      <td>{{movie.mv_Plot}}</td>
+    </tr>
+  </tbody>
+</table>
+<span *ngIf="errorMessage">{{errorMessage}}</span>

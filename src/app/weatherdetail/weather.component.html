@@ -1,0 +1,24 @@
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" placeholder="Search" name="search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="getWeather()" type="submit">Search</button>
+</form>
+<br>
+<table class="table" *ngIf="weather && !errorMessage">
+  <thead>
+    <th>City</th>
+    <th>Region</th>
+    <th>Date</th>
+    <th>Condition</th>
+    <th>Temperature</th>
+  </thead>
+  <tbody>
+    <tr style="text-align:center">
+      <td>{{weather.op_city}}</td>
+      <td>{{weather.op_region}}</td>
+      <td>{{weather.op_country}}</td>
+      <td>{{weather.op_text}}</td>
+      <td>{{weather.op_temp}} C</td>
+    </tr>
+  </tbody>
+</table>
+<span *ngIf="errorMessage">{{errorMessage}}</span>

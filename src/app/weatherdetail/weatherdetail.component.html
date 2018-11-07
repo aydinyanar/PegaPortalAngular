@@ -1,0 +1,20 @@
+<table class="table" *ngIf="weather">
+  <thead>
+    <th>City</th>
+    <th>Region</th>
+    <th>Date</th>
+    <th>Condition</th>
+    <th>Temperature</th>
+  </thead>
+  <tbody>
+    <tr style="text-align:center">
+      <td>{{weather.op_city}}</td>
+      <td>{{weather.op_region}}</td>
+      <td>{{weather.op_country}}</td>
+      <td>{{weather.op_text}}</td>
+      <td>{{weather.op_temp}} C</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-outline-success my-2 my-sm-0" (click)="GoBack()" type="submit">Back</button>
