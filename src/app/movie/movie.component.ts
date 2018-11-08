@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from './../Models/movie';
 import { MovieServiceService } from './../Services/movie-service.service';
+import {  delay, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie',
@@ -12,19 +13,19 @@ export class MovieComponent implements OnInit {
   movie: Movie;
   searchText: string;
   errorMessage: string;
+  show = false;
   constructor(private _movieService: MovieServiceService) { }
 
   ngOnInit() {
 
   }
-
   getMovie(): void {
-    this._movieService.findMovie(this.searchText).subscribe(
+    this.show = true;
+    this._movieService.findMovie(this.searchText).pipe(finalize(() => this.show = false)).subscribe(
       data => {
         this.movie = data;
         this.errorMessage = null;
       }, error => {
-        console.log('Pega2' + error);
         this.movie = null;
         this.errorMessage = error;
       }

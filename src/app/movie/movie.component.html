@@ -2,6 +2,9 @@
   <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" placeholder="Search" name="search"
     aria-label="Search">
   <button [disabled]="!searchText" class="btn btn-outline-success my-2 my-sm-0" (click)="getMovie()" type="submit">Search</button>
+  <span *ngIf="show">
+    <img src="../../assets/loader.gif"/>
+  </span>
 </form>
 <br>
 <table class="table" *ngIf="movie && !errorMessage">
